@@ -6,7 +6,7 @@ class Vehicle(models.Model):
     veh_type = models.CharField("Type of Vehicle", max_length = 10)
     veh_make = models.CharField("Make of Vehicle", max_length = 30)
     owner_id = models.IntegerField("Identification of Owner") #Aadhar for India
-    charges = models.IntegerField("Charges Dues",default = 0)
+    charges_due = models.IntegerField("Charges Dues",default = 0)
     penalty = models.IntegerField("Penalty Dues",default = 0)
     lastcrossing_lat = models.FloatField("Last seen latitude", default = -1.0)
     lastcrossing_long = models.FloatField("Last seen longitude", default  = -1.0)
