@@ -10,7 +10,10 @@ class Vehicle(models.Model):
     penalty = models.IntegerField("Penalty Dues",default = 0)
     lastcrossing_lat = models.FloatField("Last seen latitude", default = -1.0)
     lastcrossing_long = models.FloatField("Last seen longitude", default  = -1.0)
-	
+
+    def __str__(self):
+        return self.veh_number
+
 '''
 class Penalty(models.Model):#Include type of offence in a set
     veh_number = models.ForeignKey(Vehicle)
@@ -28,6 +31,9 @@ class Charges(models.Model):#Implement charge nature in a set
     loc_lat = models.FloatField("Latitude")
     loc_long = models.FloatField("Longitude") 
     when = models.DateTimeField("Date of Charge")
+
+    def __str__(self):
+        return self.veh_number.veh_number
 
 class Missing(models.Model):
     veh_number = models.ForeignKey(Vehicle)
