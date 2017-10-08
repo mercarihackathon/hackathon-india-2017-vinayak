@@ -17,12 +17,12 @@ class MissingForm(forms.ModelForm):
 class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
-        fields = ['veh_number', 'payment_type', 'payment_mode', 'amount']
+        fields = ['veh_number', 'payment_type', 'payment_mode']
 
-class ChargesForm(forms.ModelForm):
+class ChargeForm(forms.ModelForm):
     class Meta:
         model = Charges
-        fields = ['veh_number', 'charge', 'loc_lat', 'loc_long']
+        fields = ['veh_number']
 
 class CrossingsForm(forms.ModelForm):
     class Meta:

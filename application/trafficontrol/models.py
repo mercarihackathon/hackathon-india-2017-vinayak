@@ -60,4 +60,3 @@ class Payment(models.Model): #Implement payment mode in a set
 class Crossings(models.Model):
 	loc_lat = models.FloatField("Latitude")
         loc_long = models.FloatField("Longitude")
-	

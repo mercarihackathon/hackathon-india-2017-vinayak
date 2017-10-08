@@ -100,3 +100,8 @@ def payment(request):
         form = PaymentForm()
 
     return render(request, 'trafficontrol/form.html', {'form': form, 'action_url':'payment'})
+
+def demo(request):
+    vform = VehicleForm()
+    cform = ChargeForm()
+    return render(request, 'trafficontrol/demo.html', {'vform': vform, 'cform': cform})
