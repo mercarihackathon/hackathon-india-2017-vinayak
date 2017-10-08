@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from datetime import *
+from datetime import datetime
 from models import *
 
-toll_charge = 0
+toll_charge = 100
 lv_charge = 2000
 os_charge = 5000
 
@@ -32,24 +32,28 @@ def update(request):
         if cont:
             Vehicle.objects.filter(veh_number = vehicle).loc_lat = request.POST.get('loc_lat')
             Vehicle.objects.filter(veh_number = vehicle).loc_long = request.POST.get('loc_long')
-            if charge:
+            if request.POST.get('charge'):
                 add_charge(request)
     
 
 def add_charge(request): #Receveing: veh_number, veh_color, veh_type, veh_make, loc_lat, loc_long
-    
-    form = ChargesForm(request.POST)
-    if form.is_valid():
-        form.cleaned_data
-        charge = form.save(commit=False)
-        if charge.charge == "TC":
-            charge.charge_type = 0
-        else:
-            charge.charge_type = 1
-            if charge.charge == "OS":
-                pass #Alert adjacent crossings about a speeding car 
-        charge.when = datetime.now()
-        charge.save()
+    charge = Charges()
+    charge.veh_number = request.POST.get('vehicle')
+    charge.charge = request.POST.get('charge_nature')
+    if charge.charge == "TC":
+        charge.charge_type = 0
+        Vehicle.objects.filter(veh_number = charge.veh_number).road_charge += toll_charge
+    else:
+        charge.charge_type = 1
+        if charge.charge == "OS":
+            am = os_charge
+            #Alert adjancent crossigs of a potential accident 
+        elif charge.charge == "LV":
+            am = lv_charge
+        Vehicle.objects.filter(veh_number = charge.veh_number).penalty += am
+    charge.loc_lat = request.POST.get('loc_lat')
+    charge.loc_long = request.POST.get('loc_long')
+    charge.when = datetime.now()
     return 1
 
  
