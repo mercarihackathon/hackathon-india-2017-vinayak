@@ -24,10 +24,15 @@ class Penalty(models.Model):#Include type of offence in a set
 '''
 
 class Charges(models.Model):#Implement charge nature in a set
+    charge_choices = (
+        ('TC', 'Toll charge'),
+        ('OS', 'Over Speeding'),
+        ('LV', 'Light Violation'),
+    )
     veh_number = models.ForeignKey(Vehicle)
     charge_type = models.BooleanField("Offence")
-    charge_kind = models.CharField("Charge nature", max_length = 30)
-    charge = models.CharField("Charges", max_length = 100)        
+    charge_kind = models.CharField("Charge nature", choices=charge_choices, max_length=2, blank=True)
+    charge = models.CharField("Charges", max_length=100)
     loc_lat = models.FloatField("Latitude")
     loc_long = models.FloatField("Longitude") 
     when = models.DateTimeField("Date of Charge")

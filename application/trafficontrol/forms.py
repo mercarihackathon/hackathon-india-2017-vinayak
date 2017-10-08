@@ -1,6 +1,6 @@
 from django import forms
 
-from trafficontrol.models import Missing, Vehicle, Payment
+from trafficontrol.models import *
 
 class VehicleForm(forms.ModelForm):
     class Meta:
@@ -20,3 +20,8 @@ class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
         fields = ['veh_number', 'payment_type', 'payment_mode']
+
+class ChargeForm(forms.ModelForm):
+    class Meta:
+        model = Charges
+        fields = ['charge_kind']
