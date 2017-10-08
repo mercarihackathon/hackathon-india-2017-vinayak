@@ -27,4 +27,4 @@ class ChargeForm(forms.ModelForm):
 class CrossingsForm(forms.ModelForm):
     class Meta:
         model = Crossings
-        fields = ['loc_lat', 'loc_long']
+        fields = ['loc_lat', 'loc_long', 'width']

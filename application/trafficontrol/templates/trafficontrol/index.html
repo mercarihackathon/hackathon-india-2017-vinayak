@@ -1,0 +1,24 @@
+<form action="/traffic/register/" method="post">
+    {% csrf_token %}
+<input type="submit" value="Register New Vehicle" />
+</form>
+
+<form action="/traffic/missing/" method="post">
+    {% csrf_token %}
+<input type="submit" value="Report Missing Vehicle" />
+</form>
+
+<form action="/traffic/payment/" method="post">
+    {% csrf_token %}
+<input type="submit" value="Record Payment" />
+</form>
+
+<form action="/traffic/demo/" method="post">
+    {% csrf_token %}
+<input type="submit" value="Demo Input (as from Speed Camera)" />
+</form>
+
+<form action="/traffic/dues/" method="post">
+    {% csrf_token %}
+<input type="submit" value="Check Person's Dues" />
+</form>

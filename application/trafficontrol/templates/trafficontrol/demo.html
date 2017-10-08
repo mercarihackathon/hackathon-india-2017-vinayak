@@ -1,12 +1,16 @@
-<form action="/traffic/{{ action_url }}/" method="post">
+<form action="/traffic/demoresult/" method="post">
     {% csrf_token %}
-    {{ vform.as_p }}
+    Registration of Vehicle: <input type="text" name="vehicle"><br><br>
+    Color of Vehicle: <input type="text" name="color"><br><br>
+    Type of Vehicle: <input type="text" name="type"><br><br>
+    Make of Vehicle: <input type="text" name="make"><br><br>
     Latitude: <input type="text" name="loc_lat"><br><br>
     Longitude: <input type="text" name="loc_long"><br><br>
-    <input type="radio" name="charge" value="1">Charge<br><br>
+    <input type="checkbox" name="charge" value="1">Charge<br><br>
+    
     Charge Nature
     <select name="charge_nature" id="charge_nature">
-        <option disabled selected value> ---- </option>
+        <option disabled selected value> None </option>
         <option value="TC">Toll Charge</option>
         <option value="OS">Over Speeding</option>
         <option value="LV">Light Violation</option>

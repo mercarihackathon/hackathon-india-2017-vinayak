@@ -18,15 +18,6 @@ class Missing(models.Model):
     veh_number = models.ForeignKey(Vehicle, verbose_name = "Vehicle Registration Number")
     when = models.DateTimeField("Date of Missing Report")
 
-'''
-class Penalty(models.Model):#Include type of offence in a set
-    veh_number = models.ForeignKey(Vehicle)
-    offence = models.CharField("Offence", max_length = 100)
-    loc_lat = models.FloatField("Latitude")
-    loc_long = models.FloatField("Longitude")
-    when = models.DateTimeField()
-'''
-
 class Charges(models.Model):
     charge_choice = (
 		("TC", "Toll Charge"),
@@ -60,3 +51,5 @@ class Payment(models.Model): #Implement payment mode in a set
 class Crossings(models.Model):
 	loc_lat = models.FloatField("Latitude")
         loc_long = models.FloatField("Longitude")
+        width = models.FloatField("Width of the crossing")
+        density = models.FloatField("Traffic density", default = 0)
