@@ -15,8 +15,6 @@ class MissingForm(forms.ModelForm):
 
 
 class PaymentForm(forms.ModelForm):
-    when = forms.DateField(widget=forms.DateInput())
-
     class Meta:
         model = Payment
         fields = ['veh_number', 'payment_type', 'payment_mode']
@@ -24,4 +22,9 @@ class PaymentForm(forms.ModelForm):
 class ChargeForm(forms.ModelForm):
     class Meta:
         model = Charges
-        fields = ['charge_kind']
+        fields = ['veh_number']
+
+class CrossingsForm(forms.ModelForm):
+    class Meta:
+        model = Crossings
+        fields = ['loc_lat', 'loc_long']
