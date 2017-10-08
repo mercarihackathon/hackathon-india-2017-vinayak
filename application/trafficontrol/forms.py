@@ -9,8 +9,6 @@ class VehicleForm(forms.ModelForm):
 
 
 class MissingForm(forms.ModelForm):
-    when = forms.DateField(widget=forms.DateInput())
-
     class Meta:
         model = Missing
         fields = ['veh_number']

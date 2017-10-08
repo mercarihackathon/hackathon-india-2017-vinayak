@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from datetime import datetime
 
 from .forms import *
 
@@ -25,6 +26,7 @@ def missing(request):
         if form.is_valid():
             form.cleaned_data
             missing = form.save(commit=False)
+            missing.when = datetime.now()
             missing.save()
             return render(request, 'trafficontrol/thanks.html', {})
     else:
